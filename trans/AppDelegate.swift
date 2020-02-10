@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -33,6 +34,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
+        // 新增开机启动代码
+        let launcherAppId = "Tang.trans.LauncherTrans"
+        let runningApps = NSWorkspace.shared.runningApplications
+        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+
+        SMLoginItemSetEnabled(launcherAppId as CFString, true)
+
+        if isRunning {
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -64,6 +75,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension NSNotification.Name {
     public static let NSPasteboardDidChange: NSNotification.Name = .init(rawValue: "pasteboardDidChangeNotification")
+    // 向后台常驻程序传递信息，通知关闭后台程序
+    static let killLauncher = Notification.Name("killLauncher")
 }
 
 extension NSTextField {

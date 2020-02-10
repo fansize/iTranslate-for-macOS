@@ -11,7 +11,8 @@ import CommonCrypto
 import UserNotifications
 import Foundation
 
-var state = 1
+var state = 1  //开机启动状态，默认开启
+var newstate = 1  //软件启用状态，默认启用
 var temp = ""
 var tempTrans = ""
 var from = "auto"
@@ -26,7 +27,25 @@ class PopoverViewController: NSViewController {
     @IBOutlet weak var copyButton: NSButton!
     @IBOutlet weak var langSwicher: NSPopUpButtonCell!
     
-    @IBOutlet weak var enableTransItem: NSMenuItem!
+    // 新增一个控制启用/关闭的选框
+    @IBOutlet weak var turnSwitch: NSButton!
+    // 原启用的控制菜单选项
+    @IBOutlet weak var enableBootUp: NSMenuItem!
+    
+    
+    
+    // 软件启用按钮逻辑
+    @IBAction func turnOnOff(_ sender: Any) {
+        newstate = turnSwitch.state.rawValue
+        if (newstate == 1) {
+            turnSwitch.title = "启用"
+        }
+        else {
+            turnSwitch.title = "关闭"
+        }
+    }
+    
+    // 切换翻译语言的逻辑
     @IBAction func switchLanguage(_ sender: Any) {
         let selected = langSwicher.indexOfSelectedItem
         temp = ""
@@ -49,28 +68,49 @@ class PopoverViewController: NSViewController {
         }
     }
     
+    // 弹出设置弹窗逻辑
     @IBAction func settingsButton(_ sender: Any) {
         let p = NSPoint(x: (sender as AnyObject).frame.width, y: 0)
-        settingsMenu.popUp(positioning: nil, at: p, in: sender as! NSView)
+        settingsMenu.popUp(positioning: nil, at: p, in: sender as? NSView)
     }
     
+    // 退出软件逻辑
     @IBAction func quitApp(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
     
-    
+    // 开机启动逻辑
     @IBAction func enableTrans(_ sender: Any) {
-        state = enableTransItem.state.rawValue
+        state = enableBootUp.state.rawValue
+        print(state)
         if (state == 1) {
-            enableTransItem.state = NSControl.StateValue.off
+            enableBootUp.state = NSControl.StateValue.off
         }
         else {
-            enableTransItem.state = NSControl.StateValue.on
+            enableBootUp.state = NSControl.StateValue.on
         }
-        state = enableTransItem.state.rawValue
+        state = enableBootUp.state.rawValue
     }
     
+    // 搜索框逻辑
+    @IBAction func searchClick(_ sender: NSSearchField) {
+        copyButton.title = "复制"
+        let cur = sender.stringValue;
+        if (cur != temp){
+            getTranslationResult(str: cur, type:"search")
+            temp = cur
+        }
+    }
     
+    // 复制结果按钮的逻辑
+    @IBAction func copyResult(_ sender: Any) {
+        let pb = NSPasteboard.general
+        pb.clearContents()
+        pb.setString(tempTrans, forType: .string)
+        copyButton.title = "已复制"
+    }
+    
+    // ？？？？貌似是程序加载部分的逻辑
     override func viewDidLoad() {
         super.viewDidLoad()
     NotificationCenter.default.addObserver(self, selector: #selector(onPasteboardChanged), name: .NSPasteboardDidChange, object: nil)
@@ -82,34 +122,18 @@ class PopoverViewController: NSViewController {
         guard let items = pb.pasteboardItems else { return }
         
         guard let cur = items.first?.string(forType: .string) else { return }
-        if (cur != temp && cur != tempTrans && state==1){
+        if (cur != temp && cur != tempTrans && newstate==1){
             inputText.stringValue = cur
             getTranslationResult(str: cur, type:"copy")
             temp = cur
         }
     }
     
-    @IBAction func searchClick(_ sender: NSSearchField) {
-        copyButton.title = "Copy"
-        let cur = sender.stringValue;
-        if (cur != temp){
-            getTranslationResult(str: cur, type:"search")
-            temp = cur
-        }
-    }
+
+
     
-    @IBAction func clearResult(_ sender: Any) {
-        inputText.stringValue = "";
-        translatedText.stringValue = "";
-    }
     
-    @IBAction func copyResult(_ sender: Any) {
-        let pb = NSPasteboard.general
-        pb.clearContents()
-        pb.setString(tempTrans, forType: .string)
-        copyButton.title = "Copied"
-    }
-    
+    // 从百度翻译接口获取翻译结果
     func getTranslationResult(str:String, type:String) -> Void {
         if (str.isEmpty) {
             translatedText.stringValue = ""
@@ -117,9 +141,9 @@ class PopoverViewController: NSViewController {
             return
         }
         
-        let appid = "xxxxx"; //换成你自己的百度翻译APPID
+        let appid = "20200117000376242"; //换成你自己的百度翻译APPID
         let salt = "1435660288"; //其实应该是随机数的但是我太懒了
-        let key = "xxxxx"; //换成你自己的百度翻译KEY
+        let key = "L6Gr4G1h8xjJntY98FQe"; //换成你自己的百度翻译KEY
         let sign = md5Hash(str: appid+str+salt+key);
         let base = "https://fanyi-api.baidu.com/api/trans/vip/translate"
         var url = base+"?q="+str.urlEncoded()+"&appid="+appid+"&salt="+salt+"&sign="+sign+"&from="+from+"&to="+to;
@@ -137,7 +161,7 @@ class PopoverViewController: NSViewController {
             url = base+"?q="+str.urlEncoded()+"&appid="+appid+"&salt="+salt+"&sign="+sign+"&from=en&to=zh";
         }
         
-        
+        // 处理接口返回的JSON数据
         func getTranslationSuccess(data: Data?, response: URLResponse?, error: Error?) -> Void {
             DispatchQueue.main.async {
                 do {
@@ -213,6 +237,7 @@ class PopoverViewController: NSViewController {
         return "en"
     }
     
+    // 通知中心逻辑
     func notify(title: String,body: String){
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { success, error in
