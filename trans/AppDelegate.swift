@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  trans
-//
-//  Created by Seon Wong on 2019/10/19.
-//  Copyright © 2019 Seon. All rights reserved.
-//
-
 import Cocoa
 import ServiceManagement
 
