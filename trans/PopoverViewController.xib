@@ -108,7 +108,7 @@
         </customView>
         <menu autoenablesItems="NO" id="Sff-uS-hlR">
             <items>
-                <menuItem title="开机启动" state="on" id="wOJ-z6-VA0">
+                <menuItem title="开机启动" id="wOJ-z6-VA0">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="enableTrans:" target="-2" id="1yx-0w-biW"/>
