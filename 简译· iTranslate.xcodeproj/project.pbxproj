@@ -70,7 +70,7 @@
 		2CBB24FA235B3B9B00ED8A1F = {
 			isa = PBXGroup;
 			children = (
-				2CBB2505235B3B9B00ED8A1F /* trans */,
+				2CBB2505235B3B9B00ED8A1F /* iTranslate */,
 				E7117D0723EFB068006F605B /* LauncherTrans */,
 				2CBB2504235B3B9B00ED8A1F /* Products */,
 				E7117D1B23EFB238006F605B /* Frameworks */,
@@ -86,7 +86,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CBB2505235B3B9B00ED8A1F /* trans */ = {
+		2CBB2505235B3B9B00ED8A1F /* iTranslate */ = {
 			isa = PBXGroup;
 			children = (
 				2CBB2506235B3B9B00ED8A1F /* AppDelegate.swift */,
@@ -97,7 +97,7 @@
 				2CBB250E235B3B9C00ED8A1F /* trans.entitlements */,
 				2CBB250D235B3B9C00ED8A1F /* Info.plist */,
 			);
-			path = trans;
+			path = iTranslate;
 			sourceTree = "<group>";
 		};
 		E7117D0723EFB068006F605B /* LauncherTrans */ = {
@@ -175,7 +175,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "ITranslate" */;
+			buildConfigurationList = 2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "简译· iTranslate" */;
 			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -366,18 +366,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = trans/trans.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iTranslate/trans.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0;
-				INFOPLIST_FILE = trans/Info.plist;
+				CURRENT_PROJECT_VERSION = 6;
+				INFOPLIST_FILE = iTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tlang.itranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -389,18 +389,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = trans/trans.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iTranslate/trans.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0;
-				INFOPLIST_FILE = trans/Info.plist;
+				CURRENT_PROJECT_VERSION = 6;
+				INFOPLIST_FILE = iTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tlang.itranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -455,7 +455,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "ITranslate" */ = {
+		2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "简译· iTranslate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CBB2525235B3B9C00ED8A1F /* Debug */,
