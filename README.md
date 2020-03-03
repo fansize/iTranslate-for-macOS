@@ -9,8 +9,6 @@
     </a>
 </p>
 
-&nbsp;
-
 简译iTranslate的功能很简单，核心特点就是直接翻译复制到剪贴板的内容然后用通知告诉你翻译结果。
 
 这么做的原因是大部分人在想翻译一个东西的前置操作其实就是复制，那么现在将复制和翻译的动作合并成一个，并且结果用一个通知的方式告诉你，就大大简化了这个翻译流程，只需要一步`⌘+C`就可以得到你想要的结果了。
@@ -25,13 +23,13 @@
 
 💡 可以通过MenuBar的菜单进行快速的查词
 
-![](/Users/tanglang/myProgram/iTranslate/README.assets/cover-20200303173740788.png)
+![](https://tlang-blog.s3.us-east-2.amazonaws.com/uPic/cover-20200303223753319.png)
 
 
 
 ### 📥 Installation 
 
-简译iTranslate已经上架 [Mac App Store](https://apps.apple.com/app/nef/id1479391704?mt=8) ，您可以直接点击链接下载；
+简译iTranslate已经上架 [Mac App Store](https://apps.apple.com/cn/app/id1499480791?mt=12) ，您可以直接点击链接下载；
 
 你也可以下载源码后直接编译到本机使用。
 
