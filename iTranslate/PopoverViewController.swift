@@ -2,8 +2,10 @@ import Cocoa
 import CommonCrypto
 import UserNotifications
 import Foundation
+import KeyHolder
+import Magnet
 
-var state = 1  //开机启动状态，默认开启
+var state = 0  //开机启动状态，默认开启
 var newstate = 1  //软件启用状态，默认启用
 var temp = ""
 var tempTrans = ""
@@ -65,6 +67,25 @@ class PopoverViewController: NSViewController {
         let p = NSPoint(x: (sender as AnyObject).frame.width, y: 0)
         settingsMenu.popUp(positioning: nil, at: p, in: sender as? NSView)
     }
+    
+    // 设置快捷键
+    @IBAction func setShortCut(_ sender: Any) {
+//        let recordView = RecordView(frame: CGRect.zero)
+//        recordView.tintColor = NSColor(red: 0.164, green: 0.517, blue: 0.823, alpha: 1)
+//        let keyCombo = KeyCombo(doubledCocoaModifiers: .command)
+//        recordView.keyCombo = keyCombo
+        print("触发了设置键")
+        
+        let recordView = RecordView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        recordView.tintColor = NSColor(red: 0.164, green: 0.517, blue: 0.823, alpha: 1)
+        let keyCombo = KeyCombo(doubledCocoaModifiers: .command)
+        recordView.keyCombo = keyCombo
+        
+
+        let hotKey = HotKey(identifier: "KeyHolderExample", keyCombo: keyCombo!, target: self, action: #selector(AppDelegate.hotkeyCalled))
+        hotKey.register()
+    }
+     
     
     // 退出软件逻辑
     @IBAction func quitApp(_ sender: Any) {

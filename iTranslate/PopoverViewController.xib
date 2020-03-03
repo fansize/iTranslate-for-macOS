@@ -108,6 +108,12 @@
         </customView>
         <menu autoenablesItems="NO" id="Sff-uS-hlR">
             <items>
+                <menuItem title="设置快捷键" id="0Tb-S5-LOW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="setShortCut:" target="-2" id="pQ2-Ua-coJ"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="开机启动" id="wOJ-z6-VA0">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -121,7 +127,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="286" y="93"/>
+            <point key="canvasLocation" x="288" y="115"/>
         </menu>
     </objects>
     <resources>
