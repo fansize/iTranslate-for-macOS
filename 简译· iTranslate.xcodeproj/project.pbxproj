@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		E7117D0D23EFB069006F605B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7117D0C23EFB069006F605B /* Assets.xcassets */; };
 		E7117D1A23EFB1EF006F605B /* LauncherTrans.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7117D0623EFB068006F605B /* LauncherTrans.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E7117D1D23EFB238006F605B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7117D1C23EFB238006F605B /* ServiceManagement.framework */; };
+		E7A4427124017937006803E2 /* KeyHolder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A4427024017937006803E2 /* KeyHolder.framework */; };
+		E7A442732401793A006803E2 /* Magnet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A442722401793A006803E2 /* Magnet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +48,8 @@
 		E7117D1423EFB069006F605B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7117D1523EFB069006F605B /* LauncherTrans.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LauncherTrans.entitlements; sourceTree = "<group>"; };
 		E7117D1C23EFB238006F605B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		E7A4427024017937006803E2 /* KeyHolder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeyHolder.framework; path = Carthage/Build/Mac/KeyHolder.framework; sourceTree = "<group>"; };
+		E7A442722401793A006803E2 /* Magnet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Magnet.framework; path = Carthage/Build/Mac/Magnet.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7117D1D23EFB238006F605B /* ServiceManagement.framework in Frameworks */,
+				E7A4427124017937006803E2 /* KeyHolder.framework in Frameworks */,
+				E7A442732401793A006803E2 /* Magnet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +76,7 @@
 		2CBB24FA235B3B9B00ED8A1F = {
 			isa = PBXGroup;
 			children = (
-				2CBB2505235B3B9B00ED8A1F /* trans */,
+				2CBB2505235B3B9B00ED8A1F /* iTranslate */,
 				E7117D0723EFB068006F605B /* LauncherTrans */,
 				2CBB2504235B3B9B00ED8A1F /* Products */,
 				E7117D1B23EFB238006F605B /* Frameworks */,
@@ -86,7 +92,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CBB2505235B3B9B00ED8A1F /* trans */ = {
+		2CBB2505235B3B9B00ED8A1F /* iTranslate */ = {
 			isa = PBXGroup;
 			children = (
 				2CBB2506235B3B9B00ED8A1F /* AppDelegate.swift */,
@@ -97,7 +103,7 @@
 				2CBB250E235B3B9C00ED8A1F /* trans.entitlements */,
 				2CBB250D235B3B9C00ED8A1F /* Info.plist */,
 			);
-			path = trans;
+			path = iTranslate;
 			sourceTree = "<group>";
 		};
 		E7117D0723EFB068006F605B /* LauncherTrans */ = {
@@ -114,6 +120,8 @@
 		E7117D1B23EFB238006F605B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7A442722401793A006803E2 /* Magnet.framework */,
+				E7A4427024017937006803E2 /* KeyHolder.framework */,
 				E7117D1C23EFB238006F605B /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
@@ -130,6 +138,7 @@
 				2CBB2500235B3B9B00ED8A1F /* Frameworks */,
 				2CBB2501235B3B9B00ED8A1F /* Resources */,
 				E7117D1923EFB1C1006F605B /* CopyFiles */,
+				E7A4427424017953006803E2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -165,7 +174,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = Seon;
+				ORGANIZATIONNAME = com.tlang;
 				TargetAttributes = {
 					2CBB2502235B3B9B00ED8A1F = {
 						CreatedOnToolsVersion = 11.1;
@@ -175,8 +184,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "iTranslate" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "简译· iTranslate" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -214,6 +223,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E7A4427424017953006803E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/KeyHolder.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Magnet.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2CBB24FF235B3B9B00ED8A1F /* Sources */ = {
@@ -297,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -352,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -366,19 +397,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = trans/trans.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iTranslate/trans.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0;
-				INFOPLIST_FILE = trans/Info.plist;
+				CURRENT_PROJECT_VERSION = 6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = iTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tang.trans;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlang.itranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -389,19 +424,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = trans/trans.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iTranslate/trans.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0;
-				INFOPLIST_FILE = trans/Info.plist;
+				CURRENT_PROJECT_VERSION = 6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = iTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tang.trans;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlang.itranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -455,7 +494,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "iTranslate" */ = {
+		2CBB24FE235B3B9B00ED8A1F /* Build configuration list for PBXProject "简译· iTranslate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CBB2525235B3B9C00ED8A1F /* Debug */,
