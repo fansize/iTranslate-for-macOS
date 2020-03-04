@@ -1,4 +1,4 @@
 # within .gitignore
 Carthage
 iTranslate.xcodeproj
-*.xcuserstate
+xcuserdata/
