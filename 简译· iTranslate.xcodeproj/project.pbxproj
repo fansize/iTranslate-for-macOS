@@ -16,6 +16,8 @@
 		E7117D0D23EFB069006F605B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7117D0C23EFB069006F605B /* Assets.xcassets */; };
 		E7117D1A23EFB1EF006F605B /* LauncherTrans.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7117D0623EFB068006F605B /* LauncherTrans.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E7117D1D23EFB238006F605B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7117D1C23EFB238006F605B /* ServiceManagement.framework */; };
+		E717BC0F240F97C400CB0718 /* GoogleReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E717BC0E240F97C400CB0718 /* GoogleReporter.framework */; };
+		E717BC10240F97C400CB0718 /* GoogleReporter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E717BC0E240F97C400CB0718 /* GoogleReporter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7A4427124017937006803E2 /* KeyHolder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A4427024017937006803E2 /* KeyHolder.framework */; };
 		E7A442732401793A006803E2 /* Magnet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A442722401793A006803E2 /* Magnet.framework */; };
 /* End PBXBuildFile section */
@@ -29,6 +31,17 @@
 			files = (
 				E7117D1A23EFB1EF006F605B /* LauncherTrans.app in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E717BC11240F97C400CB0718 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E717BC10240F97C400CB0718 /* GoogleReporter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -48,6 +61,7 @@
 		E7117D1423EFB069006F605B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7117D1523EFB069006F605B /* LauncherTrans.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LauncherTrans.entitlements; sourceTree = "<group>"; };
 		E7117D1C23EFB238006F605B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		E717BC0E240F97C400CB0718 /* GoogleReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleReporter.framework; path = Carthage/Build/Mac/GoogleReporter.framework; sourceTree = "<group>"; };
 		E7A4427024017937006803E2 /* KeyHolder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeyHolder.framework; path = Carthage/Build/Mac/KeyHolder.framework; sourceTree = "<group>"; };
 		E7A442722401793A006803E2 /* Magnet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Magnet.framework; path = Carthage/Build/Mac/Magnet.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E717BC0F240F97C400CB0718 /* GoogleReporter.framework in Frameworks */,
 				E7117D1D23EFB238006F605B /* ServiceManagement.framework in Frameworks */,
 				E7A4427124017937006803E2 /* KeyHolder.framework in Frameworks */,
 				E7A442732401793A006803E2 /* Magnet.framework in Frameworks */,
@@ -120,6 +135,7 @@
 		E7117D1B23EFB238006F605B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E717BC0E240F97C400CB0718 /* GoogleReporter.framework */,
 				E7A442722401793A006803E2 /* Magnet.framework */,
 				E7A4427024017937006803E2 /* KeyHolder.framework */,
 				E7117D1C23EFB238006F605B /* ServiceManagement.framework */,
@@ -139,6 +155,7 @@
 				2CBB2501235B3B9B00ED8A1F /* Resources */,
 				E7117D1923EFB1C1006F605B /* CopyFiles */,
 				E7A4427424017953006803E2 /* ShellScript */,
+				E717BC11240F97C400CB0718 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

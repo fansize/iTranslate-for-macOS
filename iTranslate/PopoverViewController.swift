@@ -4,8 +4,9 @@ import UserNotifications
 import Foundation
 import KeyHolder
 import Magnet
+import GoogleReporter
 
-var state = 0  //开机启动状态，默认开启
+var state = 0  //开机启动状态，默认关闭
 var newstate = 1  //软件启用状态，默认启用
 var temp = ""
 var tempTrans = ""
@@ -37,6 +38,8 @@ class PopoverViewController: NSViewController {
         else {
             turnSwitch.title = "关闭"
         }
+        
+        GoogleReporter.shared.event("弹窗", action: "启动软件", label: String(newstate)) //启用软件事件埋点
     }
     
     // 切换翻译语言的逻辑
@@ -66,6 +69,8 @@ class PopoverViewController: NSViewController {
     @IBAction func settingsButton(_ sender: Any) {
         let p = NSPoint(x: (sender as AnyObject).frame.width, y: 0)
         settingsMenu.popUp(positioning: nil, at: p, in: sender as? NSView)
+        
+        GoogleReporter.shared.event("弹窗", action: "打开弹窗") //打开弹窗事件埋点
     }
     
     // 设置快捷键
@@ -74,7 +79,9 @@ class PopoverViewController: NSViewController {
 //        recordView.tintColor = NSColor(red: 0.164, green: 0.517, blue: 0.823, alpha: 1)
 //        let keyCombo = KeyCombo(doubledCocoaModifiers: .command)
 //        recordView.keyCombo = keyCombo
-        print("触发了设置键")
+        // 用通知提示
+        notify(title: "功能提醒", body: "开发中")
+        GoogleReporter.shared.event("弹窗", action: "设置快捷键") //设置快捷键事件埋点
         
         let recordView = RecordView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         recordView.tintColor = NSColor(red: 0.164, green: 0.517, blue: 0.823, alpha: 1)
@@ -90,19 +97,22 @@ class PopoverViewController: NSViewController {
     // 退出软件逻辑
     @IBAction func quitApp(_ sender: Any) {
         NSApplication.shared.terminate(self)
+        
+        GoogleReporter.shared.event("弹窗", action: "退出软件") //退出软件事件埋点
     }
     
     // 开机启动逻辑
     @IBAction func enableTrans(_ sender: Any) {
         state = enableBootUp.state.rawValue
-        print(state)
-        if (state == 1) {
-            enableBootUp.state = NSControl.StateValue.off
-        }
-        else {
+        if (state == 0) {
             enableBootUp.state = NSControl.StateValue.on
         }
+        else {
+            enableBootUp.state = NSControl.StateValue.off
+        }
         state = enableBootUp.state.rawValue
+        
+        GoogleReporter.shared.event("弹窗", action: "开机启动", label: String(state)) //开机启动的埋点事件
     }
     
     // 搜索框逻辑
@@ -113,6 +123,8 @@ class PopoverViewController: NSViewController {
             getTranslationResult(str: cur, type:"search")
             temp = cur
         }
+        
+        GoogleReporter.shared.event("弹窗", action: "输入搜索") //在弹窗中输入搜索的埋点事件
     }
     
     // 复制结果按钮的逻辑
@@ -121,6 +133,8 @@ class PopoverViewController: NSViewController {
         pb.clearContents()
         pb.setString(tempTrans, forType: .string)
         copyButton.title = "已复制"
+        
+        GoogleReporter.shared.event("弹窗", action: "复制结果") //在弹窗中复制结果的埋点事件
     }
     
     // ？？？？貌似是程序加载部分的逻辑
@@ -154,9 +168,9 @@ class PopoverViewController: NSViewController {
             return
         }
         
-        let appid = "20200117000376242"; //换成你自己的百度翻译APPID
+        let appid = "20200117000376242"; //百度翻译APPID
         let salt = "1435660288"; //其实应该是随机数的但是我太懒了
-        let key = "L6Gr4G1h8xjJntY98FQe"; //换成你自己的百度翻译KEY
+        let key = "L6Gr4G1h8xjJntY98FQe"; //百度翻译KEY
         let sign = md5Hash(str: appid+str+salt+key);
         let base = "https://fanyi-api.baidu.com/api/trans/vip/translate"
         var url = base+"?q="+str.urlEncoded()+"&appid="+appid+"&salt="+salt+"&sign="+sign+"&from="+from+"&to="+to;
@@ -251,12 +265,14 @@ class PopoverViewController: NSViewController {
     }
     
     // 通知中心逻辑
-    func notify(title: String,body: String){
+    func notify(title: String, body: String){
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { success, error in
            if error == nil {
                if success == true {
-                print("Permission granted")
+                print("翻译成功")
+                GoogleReporter.shared.event("首页", action: "复制翻译", label: title) //复制翻译的埋点事件
+                
                 let content = UNMutableNotificationContent()
                 content.title = title;
                 content.body = body;
@@ -287,11 +303,11 @@ class PopoverViewController: NSViewController {
                 }
                }
                else {
-                   print("Permission denied")
+                   print("接口拒绝")
                }
            }
            else {
-               print("error1")
+               print("翻译出错")
            }
         }
     }

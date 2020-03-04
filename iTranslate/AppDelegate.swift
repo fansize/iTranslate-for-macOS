@@ -2,6 +2,7 @@ import Cocoa
 import ServiceManagement
 import KeyHolder
 import Magnet
+import GoogleReporter
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         showPopover(popover)
     
+        GoogleReporter.shared.configure(withTrackerId: "UA-158042469-2")
+        
         if let button = statusItem.button {
             button.image = NSImage(named: NSImage.Name("statusIcon"))
             button.action = #selector(togglePopover)

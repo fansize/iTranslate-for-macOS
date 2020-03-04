@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PopoverViewController" customModule="iTranslate" customModuleProvider="target">
             <connections>
                 <outlet property="copyButton" destination="fsH-k4-i4P" id="ybr-l5-Unp"/>
+                <outlet property="enableBootUp" destination="wOJ-z6-VA0" id="5g2-cF-avv"/>
                 <outlet property="enableTransItem" destination="wOJ-z6-VA0" id="Cla-Xm-eC8"/>
                 <outlet property="inputText" destination="lcf-Bx-wze" id="MxA-ah-rje"/>
                 <outlet property="settingsMenu" destination="Sff-uS-hlR" id="dGl-yh-k33"/>
@@ -132,6 +133,6 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="StateLogo" width="64" height="64"/>
+        <image name="StateLogo" width="32" height="32"/>
     </resources>
 </document>
