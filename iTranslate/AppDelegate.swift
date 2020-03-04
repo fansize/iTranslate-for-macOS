@@ -16,7 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         showPopover(popover)
-    
+        
+        // GA埋点的e配置代码
         GoogleReporter.shared.configure(withTrackerId: "UA-158042469-2")
         
         if let button = statusItem.button {
@@ -41,17 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        let hotKey = HotKey(identifier: "KeyHolderExample", keyCombo: keyCombo!, target: self, action: #selector(AppDelegate.hotkeyCalled))
 //        hotKey.register()
 
-        
-        // 新增开机启动代码
-        let launcherAppId = "Tang.trans.LauncherTrans"
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
-
-        SMLoginItemSetEnabled(launcherAppId as CFString, true)
-
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
-        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

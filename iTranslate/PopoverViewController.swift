@@ -5,6 +5,7 @@ import Foundation
 import KeyHolder
 import Magnet
 import GoogleReporter
+import ServiceManagement
 
 var state = 0  //开机启动状态，默认关闭
 var newstate = 1  //软件启用状态，默认启用
@@ -106,13 +107,30 @@ class PopoverViewController: NSViewController {
         state = enableBootUp.state.rawValue
         if (state == 0) {
             enableBootUp.state = NSControl.StateValue.on
+            notify(title: "开机自启动", body: "开启")
         }
         else {
             enableBootUp.state = NSControl.StateValue.off
+            notify(title: "开机自启动", body: "关闭")
         }
         state = enableBootUp.state.rawValue
         
+        startupAppWhenLogin(startup: true)
+        
         GoogleReporter.shared.event("弹窗", action: "开机启动", label: String(state)) //开机启动的埋点事件
+    }
+    
+    // 新增开机启动代码
+    func startupAppWhenLogin(startup: Bool) {
+        let launcherAppId = "com.tlang.LauncherTrans"
+        //let runningApps = NSWorkspace.shared.runningApplications
+        //let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+        // 注册启动项
+        SMLoginItemSetEnabled(launcherAppId as CFString, startup)
+
+        if startup {
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        }
     }
     
     // 搜索框逻辑
