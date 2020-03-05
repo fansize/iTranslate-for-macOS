@@ -2,8 +2,6 @@ import Cocoa
 import CommonCrypto
 import UserNotifications
 import Foundation
-import KeyHolder
-import Magnet
 import GoogleReporter
 import ServiceManagement
 
@@ -83,15 +81,6 @@ class PopoverViewController: NSViewController {
         // 用通知提示
         notify(title: "功能提醒", body: "开发中")
         GoogleReporter.shared.event("弹窗", action: "设置快捷键") //设置快捷键事件埋点
-        
-        let recordView = RecordView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        recordView.tintColor = NSColor(red: 0.164, green: 0.517, blue: 0.823, alpha: 1)
-        let keyCombo = KeyCombo(doubledCocoaModifiers: .command)
-        recordView.keyCombo = keyCombo
-        
-
-        let hotKey = HotKey(identifier: "KeyHolderExample", keyCombo: keyCombo!, target: self, action: #selector(AppDelegate.hotkeyCalled))
-        hotKey.register()
     }
      
     
